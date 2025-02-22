@@ -1,0 +1,54 @@
+
+body {
+    /* background: #000; */
+    line-height: 2;
+}
+
+.c {
+    color: #ec9696;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  /*animation-name: fadeIn;*/
+  animation: fadeIn 1s both;
+}
+
+
+.content {
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 75px;
+    padding: 200px 0;
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+    
+}
+
+.animated {
+  font-family: Cambria, Cochin,'Times New Roman', Times, serif;
+  text-align: center;
+  width: 100%;
+  font-size: 50px;
+  margin: 0 auto;
+ color: #ec9696;
+}
+#myText {
+  animation: colorChange 2s infinite alternate; /* Tạo animation tên colorChange, 2s mỗi lần lặp, lặp lại vô hạn, đổi màu qua lại */
+  align-content: center;
+}
+
+@keyframes colorChange {
+  from { color: #ec9696; } /* Bắt đầu từ màu đen */
+  to { color: red; } /* Thay đổi sang màu đỏ */
+}

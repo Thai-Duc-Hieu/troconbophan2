@@ -7,10 +7,106 @@
     <title>Lớp Du Sô Mút</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="style2.css">
+    <style>
+      html, body { 
+        width: 100%;
+        height: 100%; 
+        margin: 0;
+        background: #270F34; 
+        overflow: hidden; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center;
+        position: relative;
+        font-family: 'Segoe UI', sans-serif;
+      }
+
+      .message {
+        position: absolute;
+        color: rgba(255, 255, 255, 0.7);
+        text-align: center;
+        font-size: 2rem;
+        font-family: 'Times New Roman', serif;
+        max-width: 90%;
+        line-height: 1.5;
+        z-index: 10;
+        animation: fadeIn 3s ease-in-out;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      @keyframes blink {
+        0%, 50% { opacity: 1; }
+        51%, 100% { opacity: 0.3; }
+      }
+    </style>
 </head>
 
 
 <body>
+    
+    <!-- Background effect from abc.html -->
+    <div class="message">
+        Xin chào người dễ thương nhất thế gian 🌷<br>
+        Thử chạm nhẹ vào màn hình xem… có điều bất ngờ đang đợi đó 💖
+        
+    </div>
+
+    <style>
+      css-doodle {
+        --color: @p(#51eaea, #fffde1, #ff9d76, #FB3569);
+        --rule: (
+          :doodle {
+            @grid: 30x1 / 18vmin;
+            --deg: @p(-180deg, 180deg);
+          }
+          :container {
+            perspective: 30vmin;
+          }
+          :after, :before {
+            content: '';
+            background: var(--color); 
+            @place-cell: @r(100%) @r(100%);
+            @size: @r(6px);
+            @shape: heart;
+          }
+        
+          @place-cell: center;
+          @size: 100%;
+        
+          box-shadow: @m2(0 0 50px var(--color));
+          background: @m100(
+            radial-gradient(var(--color) 50%, transparent 0) 
+            @r(-20%, 120%) @r(-20%, 100%) / 1px 1px
+            no-repeat
+          );
+        
+          will-change: transform, opacity;
+          animation: scale-up 12s linear infinite;
+          animation-delay: calc(-12s / @I * @i);
+
+          @keyframes scale-up {
+            0%, 95.01%, 100% {
+              transform: translateZ(0) rotate(0);
+              opacity: 0;
+            }
+            10% { 
+              opacity: 1; 
+            }
+            95% {
+              transform: 
+                translateZ(35vmin) rotateZ(@var(--deg));
+            }
+          }
+        )
+      }
+    </style>
+
+    <css-doodle use="var(--rule)"></css-doodle>
+    <script src="https://unpkg.com/css-doodle@0.15.3/css-doodle.min.js"></script>
     
     <audio id="myAudio">
         <source src="music.mp3" type="audio/mpeg">
@@ -20,6 +116,11 @@
       <script>
         document.body.addEventListener('click', function() {
           document.getElementById('myAudio').play();
+          // Ẩn thông điệp "Nhấn dô dây" sau khi click
+          const messageElement = document.querySelector('.message');
+          if (messageElement) {
+            messageElement.style.display = 'none';
+          }
         });
       </script>
 
